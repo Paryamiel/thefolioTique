@@ -1,0 +1,866 @@
+/* ================================================
+   RIOT BLOG PORTFOLIO - SIMPLE STYLESHEET
+   css file
+   ================================================ */
+
+/*reset*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*main colors*/
+:root {
+    --primary: #FF4655;      
+    --secondary: #0F1923;    
+    --accent: #C89B3C;        
+    --light: #F5F5F5;        
+    --white: #FFFFFF;
+    --gray: #666666;
+}
+
+/* fonts used */
+/* oswald for headings*/
+/* roboto for body*/
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: var(--white);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.3rem; }
+
+p { margin-bottom: 1rem; }
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+/*container*/
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/*header*/
+.header {
+    background-color: var(--secondary);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-list a {
+    color: var(--light);
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: all 0.3s ease; /*effect 1*/
+}
+
+/*effect 2*/
+.nav-list a:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+/*active indicator*/
+.nav-list a.active {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+/* DARK MODE SWITCH BUTTON STYLE */
+.theme-switch {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--white);
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    margin-left: 15px;
+    transition: all 0.3s ease;
+}
+
+.theme-switch:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+/*hero*/
+.hero {
+    background-color: var(--secondary);
+    color: var(--white);
+    padding: 60px 0;
+    text-align: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.hero h1 {
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: var(--light);
+}
+
+.hero img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3); /* CSS Effect 3: Box Shadow */
+}
+
+/*page title*/
+.page-title {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 40px 0;
+    text-align: center;
+}
+
+.page-title h1 {
+    color: var(--white);
+    margin-bottom: 0;
+}
+
+/*sections*/
+.section {
+    padding: 50px 0;
+}
+
+.section.alt-bg {
+    background-color: var(--light);
+    transition: background-color 0.3s ease;
+}
+
+/*highlight list*/
+.highlight-list {
+    list-style: none;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.highlight-list li {
+    background-color: var(--white);
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.highlight-list li:hover {
+    transform: translateX(5px);
+}
+
+/*card grid*/
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    flex: 1 1 280px;
+    max-width: 320px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+    color: var(--primary);
+}
+
+/*buttons*/
+.btn {
+    display: inline-block;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #cc3644;
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/*content block*/
+.content-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.content-block.reverse {
+    flex-direction: row-reverse;
+}
+
+.content-block .text-content {
+    flex: 1 1 400px;
+}
+
+.content-block img {
+    flex: 1 1 300px;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* blockquote*/
+.quote {
+    background-color: var(--secondary);
+    color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    margin-top: 30px;
+    border-left: 5px solid var(--accent);
+}
+
+.quote p {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.quote cite {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/*timeline*/
+.timeline {
+    max-width: 700px;
+    margin: 0 auto;
+    padding-left: 20px;
+}
+
+.timeline li {
+    background-color: var(--light);
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.timeline li:hover {
+    background-color: var(--white);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/*form*/
+.form {
+    max-width: 500px;
+    background-color: var(--light);
+    padding: 30px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--secondary);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="date"],
+.form-group input[type="tel"], /* Added Phone Support */
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* validation error message */
+.error {
+    color: var(--primary);
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+    font-weight: bold;
+}
+
+/*radio/checkbox*/
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.radio-label,
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.radio-label input,
+.checkbox-label input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+}
+
+/*table*/
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+.table th,
+.table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.table thead {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+.table tbody tr:hover {
+    background-color: var(--light);
+}
+
+/*map*/
+.map-container {
+    margin-bottom: 30px;
+}
+
+.map-container iframe {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.map-container p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/*links*/
+.link-list {
+    list-style: none;
+}
+
+.link-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.link-list a {
+    font-weight: bold;
+}
+
+.link-list a:hover {
+    text-decoration: underline;
+}
+
+/*register*/
+.register-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.register-form-container {
+    flex: 1 1 400px;
+}
+
+.register-form-container .form {
+    max-width: 100%;
+}
+
+.benefits-container {
+    flex: 1 1 300px;
+}
+
+.benefits-container img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.benefits-container ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.benefits-container li {
+    margin-bottom: 8px;
+}
+
+.benefits-container em {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/*footer*/
+.footer {
+    background-color: var(--secondary);
+    color: var(--light);
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer p {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+/* =================================================
+   TRIVIA GAME STYLES (REVISED VISUALS)
+   ================================================= */
+.quiz-section {
+    text-align: center;
+}
+
+.quiz-container {
+    background-color: var(--white);
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 40px;
+    border-top: 5px solid var(--primary);
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+.quiz-header h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: var(--secondary);
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+
+/* THEMED OPTION BUTTONS */
+.option-btn {
+    width: 100%;
+    background-color: var(--light);
+    border-radius: 2px; 
+    border: 1px solid #e0e0e0;
+    border-left: 5px solid transparent; 
+    padding: 18px 25px;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif; 
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    text-align: left;
+    color: var(--secondary);
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+/* HOVER EFFECT: Slide right + Red Border */
+.option-btn:hover:not(:disabled) {
+    background-color: #fff;
+    border-left-color: var(--primary);
+    transform: translateX(8px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* SELECTED STATE: Dark Blue background */
+.option-btn.selected {
+    background-color: var(--secondary);
+    color: var(--white);
+    border-left-color: var(--primary);
+    border-color: var(--secondary);
+    transform: translateX(8px);
+}
+
+/* RESULT TEXT */
+.quiz-result {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    min-height: 30px;
+    margin-bottom: 15px;
+}
+.quiz-result.correct { color: #28a745; }
+.quiz-result.wrong { color: var(--primary); }
+
+.quiz-controls button {
+    width: 100%;
+    max-width: 250px;
+}
+
+/* =================================================
+   DARK MODE OVERRIDES
+   ================================================= */
+body.dark-mode {
+    background-color: #0F1923; /* Dark Blue as main bg */
+    color: #e0e0e0; /* Light text */
+}
+
+/* Headers become light or Riot Red in dark mode */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+    color: #FFFFFF;
+}
+
+/* HERO REACTIVE STYLE (NEW) */
+body.dark-mode .hero {
+    background: linear-gradient(135deg, #091118 0%, #172430 100%);
+    border-bottom: 2px solid var(--primary);
+}
+
+body.dark-mode .hero p {
+    color: #cccccc;
+}
+
+/* Card and Content Backgrounds */
+body.dark-mode .section.alt-bg {
+    background-color: #172430; 
+}
+
+body.dark-mode .card,
+body.dark-mode .highlight-list li,
+body.dark-mode .timeline li,
+body.dark-mode .form,
+body.dark-mode .table {
+    background-color: #1e2d3d;
+    color: #e0e0e0;
+}
+
+body.dark-mode .timeline li:hover {
+    background-color: #2a3b4d;
+}
+
+/* Text adjustments */
+body.dark-mode .form-group label,
+body.dark-mode .benefits-container h3,
+body.dark-mode .benefits-container li {
+    color: #FFFFFF;
+}
+
+/* Inputs in dark mode */
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="password"],
+body.dark-mode input[type="date"],
+body.dark-mode input[type="tel"], /* Added Phone Support */
+body.dark-mode textarea,
+body.dark-mode select {
+    background-color: #172430;
+    border-color: #444;
+    color: #fff;
+}
+
+body.dark-mode .table td {
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .table tbody tr:hover {
+    background-color: #2a3b4d;
+}
+
+/* DARK MODE ADJUSTMENTS FOR QUIZ */
+body.dark-mode .quiz-container {
+    background-color: #1e2d3d;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .quiz-header h3 {
+    color: var(--white);
+}
+
+body.dark-mode .option-btn {
+    background-color: #172430;
+    border-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .option-btn:hover:not(:disabled) {
+    background-color: #253341;
+    border-left-color: var(--primary);
+}
+
+body.dark-mode .option-btn.selected {
+    /* In dark mode, selected turns Red for high contrast */
+    background-color: var(--primary); 
+    border-color: var(--primary);
+    color: white;
+}
+
+/*other medias*/
+
+/*tablet*/
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+
+    .content-block,
+    .content-block.reverse {
+        flex-direction: column;
+    }
+
+    .content-block img {
+        max-width: 100%;
+    }
+
+    .register-layout {
+        flex-direction: column;
+    }
+}
+
+/*mobile*/
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .nav-list a {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        padding: 40px 0;
+    }
+
+    h1 { font-size: 1.75rem; }
+
+    .section {
+        padding: 30px 0;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 10px;
+    }
+
+    .radio-group {
+        flex-direction: column;
+    }
+
+   
+}
+ /* --- SPLASH SCREEN STYLES --- */
+.splash-screen-wrapper {
+  font-family: 'Oswald', sans-serif;
+  background: linear-gradient(135deg, #0F1923 0%, #1f2731 100%);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999; /* Keeps it on top of everything */
+}
+
+.loader-container {
+  text-align: center;
+}
+
+/* logo animation */
+.splash-logo {
+  font-size: 80px;
+  margin-bottom: 20px;
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(255, 70, 85, 0.5);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* typography */
+.splash-title {
+  font-size: 42px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.splash-subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  color: #FF4655; /* Riot Red */
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+/* animation */
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(255, 255, 255, 0.1);
+  border-top: 6px solid #FF4655; 
+  border-radius: 50%;
+  margin: 0 auto 30px auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.dots {
+  display: inline-block;
+  width: 20px;
+  text-align: left;
+}
+
+/* fade out */
+.fade-out {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  to { 
+    opacity: 0; 
+    transform: scale(0.95); 
+  }
+}
+/* --- Textarea Theme Support --- */
+
+/* Default (Light Mode) */
+textarea {
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #cccccc;
+  font-family: inherit;
+}
+
+/* Dark Mode */
+body.dark-mode textarea {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Make sure the text input boxes adapt too! */
+body.dark-mode input[type="text"],
+body.dark-mode input[type="password"] {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
