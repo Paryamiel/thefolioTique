@@ -1,6 +1,7 @@
 // backend/server.js
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const connectDB = require('./config/db');
 
@@ -13,31 +14,8 @@ const adminRoutes = require('./routes/admin.routes');
 const app = express();
 connectDB();
 
-// ── CORS Middleware (manual — cors package broken with Express 5) ──
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
-  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(204);
-  }
-  next();
-});
-
-// Parse incoming JSON
+app.use(cors());
 app.use(express.json());
-
-// ── Debug endpoint ──
-app.get('/api/ping', (req, res) => {
-  res.json({
-    status: 'ok',
-    cors_origin: req.headers.origin,
-    timestamp: new Date().toISOString()
-  });
-});
-
-// Serve uploaded images
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // ── Routes ──
