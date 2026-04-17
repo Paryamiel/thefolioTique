@@ -34,7 +34,7 @@ function HomePage() {
         <div className="container">
           <h1>Welcome to My Gaming Journey</h1>
           <p>Exploring the competitive universes of Valorant and League of Legends - two games that define modern esports and bring millions of players together worldwide.</p>
-          <img src={indexImg} alt="gaming image" style={{ marginTop: '20px', borderRadius: '8px', maxWidth: '100%', height: 'auto' }} />
+          <img src={indexImg} alt="gaming setup" style={{ marginTop: '20px', borderRadius: '8px', maxWidth: '100%', height: 'auto' }} />
         </div>
       </section>
 
