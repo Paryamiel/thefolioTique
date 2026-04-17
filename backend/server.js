@@ -28,6 +28,15 @@ app.use((req, res, next) => {
 // Parse incoming JSON
 app.use(express.json());
 
+// ── Debug endpoint ──
+app.get('/api/ping', (req, res) => {
+  res.json({
+    status: 'ok',
+    cors_origin: req.headers.origin,
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Serve uploaded images
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
