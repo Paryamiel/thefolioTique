@@ -87,7 +87,7 @@ function PostPage() {
           <div className="post-content" style={{ backgroundColor: 'rgba(255,255,255,0.02)', padding: '30px', borderRadius: '8px' }}>
             {post.image && (
               <img 
-                src={`http://localhost:5000/uploads/${post.image}`} 
+                src={`${process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000'}/uploads/${post.image}`} 
                 alt={post.title} 
                 style={{ width: '100%', maxHeight: '400px', objectFit: 'cover', borderRadius: '4px', marginBottom: '20px' }} 
               />

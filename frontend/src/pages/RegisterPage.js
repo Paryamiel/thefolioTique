@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import API from '../api/axios';
 
 function RegisterPage() {
-  const navigate = useNavigate(); // Used to redirect after successful registration
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     fullname: '',
@@ -19,7 +19,7 @@ function RegisterPage() {
   });
 
   const [errors, setErrors] = useState({});
-  const [serverError, setServerError] = useState(''); // Tracks errors from the backend
+  const [serverError, setServerError] = useState('');
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -76,24 +76,17 @@ function RegisterPage() {
     return isValid;
   };
 
-  // Upgraded to handle the backend API call
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setServerError(''); // Clear any previous server errors
+    setServerError('');
 
     if (validateForm()) {
       try {
-        // We separate confirmPassword and terms because the database doesn't need to save those
         const { confirmPassword, terms, ...userData } = formData;
-        
-        // Send the data to your Node/Express backend
         await API.post('/auth/register', userData);
-        
         alert("Registration successful! Please log in.");
-        navigate('/login'); // Instantly redirect the user to the login page
-
+        navigate('/login');
       } catch (err) {
-        // If the backend sends an error (e.g., email already exists), display it
         setServerError(err.response?.data?.message || 'Registration failed. Please try again.');
       }
     }
@@ -113,7 +106,6 @@ function RegisterPage() {
             <div className="register-form-container">
               <h2>Create Account</h2>
               
-              {/* Display backend errors right above the form */}
               {serverError && <div className="error-message" style={{ color: '#FF4655', marginBottom: '15px' }}>{serverError}</div>}
 
               <form className="form" onSubmit={handleSubmit}>
@@ -175,8 +167,6 @@ function RegisterPage() {
                     <option value="">Select Account Type</option>
                     <option value="basic">Basic (Free)</option>
                     <option value="premium">Premium (Paid)</option>
-                    {/* Note: In a real app, users shouldn't be able to register themselves as Admins directly! */}
-                    <option value="admin">Admin</option>
                   </select>
                   {errors.accountType && <span className="error">{errors.accountType}</span>}
                 </div>

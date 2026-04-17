@@ -24,7 +24,7 @@ function ProfilePage() {
     setIsUpdating(true);
 
     const fd = new FormData();
-    fd.append('fullname', fullname); // Changed to fullname to match registration
+    fd.append('fullname', fullname);
     fd.append('bio', bio);
     if (pic) fd.append('profilePic', pic);
 
@@ -57,10 +57,10 @@ function ProfilePage() {
     }
   };
 
-  // Construct the image source URL
+  // Construct the image source URL using env variable
   const picSrc = user?.profilePic
-    ? `http://localhost:5000/uploads/${user.profilePic}`
-    : 'https://via.placeholder.com/150/333333/FFFFFF?text=No+Avatar'; // Fallback avatar
+    ? `${process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000'}/uploads/${user.profilePic}`
+    : 'https://via.placeholder.com/150/333333/FFFFFF?text=No+Avatar';
 
   return (
     <>

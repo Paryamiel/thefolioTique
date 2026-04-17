@@ -5,22 +5,18 @@ const User = require('../models/User');
 const { protect } = require('../middleware/auth.middleware');
 const upload = require('../middleware/upload');
 const router = express.Router();
+
 // Helper function — generates a JWT token that expires in 7 days
 const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET,
 { expiresIn: '7d' });
+
 // ── POST /api/auth/register ───────────────────────────────────
 router.post('/register', async (req, res) => {
-  // 1. THIS IS OUR X-RAY! It prints the incoming data to your backend terminal
-  console.log("Data received from frontend:", req.body); 
-
-  // 2. We grab 'fullname' (or 'name' just in case), email, password, and accountType
   const { fullname, name, email, password, accountType } = req.body;
 
   try {
-    // 3. Fallback: use fullname if it exists, otherwise try name
     const finalName = fullname || name; 
 
-    // 4. Custom error if it's STILL missing
     if (!finalName) {
       return res.status(400).json({ message: "Backend did not receive the name correctly!" });
     }
@@ -28,7 +24,6 @@ router.post('/register', async (req, res) => {
     const exists = await User.findOne({ email });
     if (exists) return res.status(400).json({ message: 'Email is already registered' });
 
-    // 5. Create the user using our finalName
     const user = await User.create({ 
       name: finalName, 
       email: email, 
@@ -41,10 +36,10 @@ router.post('/register', async (req, res) => {
       user: { _id: user._id, name: user.name, email: user.email, role: user.role }
     });
   } catch (err) { 
-    console.error("Crash during registration:", err); // Log the exact crash in the terminal
     res.status(500).json({ message: err.message }); 
   }
 });
+
 // ── POST /api/auth/login ──────────────────────────────────────
 router.post('/login', async (req, res) => {
 const { email, password } = req.body;
@@ -62,18 +57,19 @@ user.role, profilePic: user.profilePic }
 });
 } catch (err) { res.status(500).json({ message: err.message }); }
 });
+
 // ── GET /api/auth/me ──────────────────────────────────────────
-// Returns the currently logged-in user's data (requires token)
 router.get('/me', protect, async (req, res) => {
 const user = await User.findById(req.user._id).select('-password');
 res.json(user);
 });
+
 // ── PUT /api/auth/profile ─────────────────────────────────────
-// Update name, bio, or upload a new profile picture
 router.put('/profile', protect, upload.single('profilePic'), async (req, res) => {
 try {
 const user = await User.findById(req.user._id);
 if (req.body.name) user.name = req.body.name;
+if (req.body.fullname) user.name = req.body.fullname; // Frontend sends 'fullname'
 if (req.body.bio) user.bio = req.body.bio;
 if (req.file) user.profilePic = req.file.filename;
 await user.save();
@@ -81,6 +77,7 @@ const updated = await User.findById(user._id).select('-password');
 res.json(updated);
 } catch (err) { res.status(500).json({ message: err.message }); }
 });
+
 // ── PUT /api/auth/change-password ────────────────────────────
 router.put('/change-password', protect, async (req, res) => {
 const { currentPassword, newPassword } = req.body;
@@ -88,7 +85,7 @@ try {
 const user = await User.findById(req.user._id);
 const match = await user.matchPassword(currentPassword);
 if (!match) return res.status(400).json({ message: 'Current password is incorrect' });
-user.password = newPassword; // pre-save hook will hash this
+user.password = newPassword;
 await user.save();
 res.json({ message: 'Password updated successfully' });
 } catch (err) { res.status(500).json({ message: err.message }); }
