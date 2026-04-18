@@ -90,16 +90,6 @@ await user.save();
 res.json({ message: 'Password updated successfully' });
 } catch (err) { res.status(500).json({ message: err.message }); }
 });
-// Contact form — embedded here since Render isn't loading contact.routes.js
-router.post('/contact-submit', async (req, res) => {
-  try {
-    const { name, email, message } = req.body;
-    const Contact = require('../models/Contact');
-    await Contact.create({ name, email, message });
-    res.status(201).json({ message: 'Message sent successfully!' });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
+
 
 module.exports = router;
