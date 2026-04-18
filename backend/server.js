@@ -10,6 +10,7 @@ const authRoutes = require('./routes/auth.routes');
 const postRoutes = require('./routes/post.routes');
 const commentRoutes = require('./routes/comment.routes');
 const adminRoutes = require('./routes/admin.routes');
+const contactRoutes = require('./routes/contact.routes');  
 
 const app = express();
 connectDB();
@@ -23,7 +24,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/comments', commentRoutes);
 app.use('/api/admin', adminRoutes);
-app.use('/api/contacts', require('./routes/contact.routes'));
+app.use('/api/contacts', contactRoutes);
 
 // ── Start Server ──
 const PORT = process.env.PORT || 5000;
