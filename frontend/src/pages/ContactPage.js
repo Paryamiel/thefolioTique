@@ -66,7 +66,7 @@ function ContactPage() {
     if (validateForm()) {
       try {
         // ACTUALLY send the data to the backend!
-        await API.post('/contacts', {
+        await API.post('/auth/contact-submit', {
           name: formData.name,
           email: formData.email,
           message: formData.message // We omit phone because we didn't add it to the Contact model
