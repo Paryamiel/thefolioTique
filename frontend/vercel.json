@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/:match*", "destination": "https://thefolio-api.onrender.com/api/:match*" },
-    { "source": "/uploads/:match*", "destination": "https://thefolio-api.onrender.com/uploads/:match*" }
+    { "source": "/api/:match*", "destination": "https://thefoliotique.onrender.com/api/:match*" },
+    { "source": "/uploads/:match*", "destination": "https://thefoliotique.onrender.com/uploads/:match*" }
   ]
 }
