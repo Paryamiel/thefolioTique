@@ -1,15 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/auth", "destination": "https://thefolio-api.onrender.com/api/auth" },
-    { "source": "/api/auth/:match*", "destination": "https://thefolio-api.onrender.com/api/auth/:match*" },
-    { "source": "/api/posts", "destination": "https://thefolio-api.onrender.com/api/posts" },
-    { "source": "/api/posts/:match*", "destination": "https://thefolio-api.onrender.com/api/posts/:match*" },
-    { "source": "/api/comments", "destination": "https://thefolio-api.onrender.com/api/comments" },
-    { "source": "/api/comments/:match*", "destination": "https://thefolio-api.onrender.com/api/comments/:match*" },
-    { "source": "/api/admin", "destination": "https://thefolio-api.onrender.com/api/admin" },
-    { "source": "/api/admin/:match*", "destination": "https://thefolio-api.onrender.com/api/admin/:match*" },
-    { "source": "/api/contacts", "destination": "https://thefolio-api.onrender.com/api/contacts" },
-    { "source": "/api/contacts/:match*", "destination": "https://thefolio-api.onrender.com/api/contacts/:match*" },
+    { "source": "/api/:match*", "destination": "https://thefolio-api.onrender.com/api/:match*" },
     { "source": "/uploads/:match*", "destination": "https://thefolio-api.onrender.com/uploads/:match*" }
   ]
 }
