@@ -59,7 +59,7 @@ function ProfilePage() {
 
   // Construct the image source URL using env variable
   const picSrc = user?.profilePic
-    ? `${process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000'}/uploads/${user.profilePic}`
+    ? (process.env.REACT_APP_BACKEND_URL ? `${process.env.REACT_APP_BACKEND_URL}/uploads/${user.profilePic}` : `/uploads/${user.profilePic}`)
     : 'https://via.placeholder.com/150/333333/FFFFFF?text=No+Avatar';
 
   return (

@@ -83,7 +83,7 @@ function RegisterPage() {
     if (validateForm()) {
       try {
         const { confirmPassword, terms, ...userData } = formData;
-        await API.post('/auth/register', userData);
+        await API.post('/auth/register', { ...userData, name: userData.fullname });
         alert("Registration successful! Please log in.");
         navigate('/login');
       } catch (err) {
